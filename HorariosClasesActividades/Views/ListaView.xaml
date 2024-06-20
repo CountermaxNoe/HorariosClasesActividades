@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HorariosClasesActividades.Views.ListaView" xmlns:models="clr-namespace:HorariosClasesActividades.Models" x:DataType="viewmodels:AgendarClaseActividadViewModel"
+             xmlns:viewmodels="clr-namespace:HorariosClasesActividades.ViewModels"
+             Title="" Shell.NavBarIsVisible="True" BackgroundColor="#C2BAF4" x:Name="PaginaLista">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar Actividad" Command="{Binding VerAgregarActividadCommand}"></ToolbarItem>
+        <ToolbarItem Text="Agregar Clase" Command="{Binding VerAgregarClaseCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <VerticalStackLayout>
+            <Label FontSize="30" HorizontalTextAlignment="Center" Margin="0,10,0,0" TextColor="Black">Agenda de la Semana</Label>
+            <Picker TextColor="Black" VerticalTextAlignment="Center" FontSize="Medium" BackgroundColor="LightGray" ItemsSource="{Binding DiasSemana}" SelectedItem="{Binding Dia}" HeightRequest="45" Margin="10"></Picker>
+            <CollectionView Margin="5" ItemsSource="{Binding Registros}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:RegsitroModel">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Editar" BackgroundColor="Black" Command="{Binding Source={x:Reference PaginaLista},Path=BindingContext.VerEditarCommand}"
+                               CommandParameter="{Binding .}"></SwipeItem>
+                                <SwipeItem Text="Eliminar" BackgroundColor="Gray" Command="{Binding Source={x:Reference PaginaLista},Path=BindingContext.EliminarCommand}"
+                               CommandParameter="{Binding .}"></SwipeItem>
+                            </SwipeView.RightItems>
+                            <VerticalStackLayout Background="Transparent">
+                                <Border HeightRequest="150" WidthRequest="400" Margin="0,0,0,10">
+                                    <Grid RowDefinitions=".3*,.3*,.4*" BackgroundColor="Yellow">
+                                        <Label BackgroundColor="Yellow" Margin="5" Grid.Row="0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Title">Actividad</Label>
+                                        <Grid BackgroundColor="LightYellow" Grid.Row="1" ColumnDefinitions=".5*,.5*">
+                                            <Border Grid.Column="0">
+                                                <Label FontSize="Subtitle" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" Text="{Binding Nombre}"></Label>
+                                            </Border>
+                                            <Border Grid.Column="1">
+                                                <Label FontSize="Subtitle" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" Text="{Binding Hora}"></Label>
+                                            </Border>
+                                        </Grid>
+                                        <Label Text="{Binding Descripcion}" BackgroundColor="LightYellow" Grid.Row="2" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

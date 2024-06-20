@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HorariosClasesActividades.Views.AgregarClaseView" xmlns:viewmodels="clr-namespace:HorariosClasesActividades.ViewModels" x:DataType="viewmodels:AgendarClaseActividadViewModel"
+             Title="AgregarClaseView" BackgroundColor="LightGreen" Shell.NavBarIsVisible="False">
+    <VerticalStackLayout>
+        <Label Text="" BackgroundColor="Green"></Label>
+        <Label BackgroundColor="Green" HorizontalTextAlignment="Center" TextColor="Black" FontSize="30" Text="Agendar Nueva Clase" Margin="0,0,0,10"></Label>
+        <Grid HeightRequest="260" ColumnDefinitions=".3*,.7*" RowDefinitions=".2*,.2*,.2*,.2*,.2*">
+            <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" TextColor="Black" Margin="15,10,15,0" Text="Nombre:"></Label>
+            <Entry BackgroundColor="#77E827" Text="{Binding Registro.Nombre}" FontSize="21" TextColor="Black" Grid.Row="0" Grid.Column="1" Margin="0,0,10,10"></Entry>
+            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" TextColor="Black" Margin="15,10,15,0" Text="Hora Inicial:"></Label>
+            <Entry BackgroundColor="#77E827" Text="{Binding Registro.Hora}" HorizontalTextAlignment="Center" FontSize="21" TextColor="Black" Keyboard="Numeric" Grid.Row="1" Grid.Column="1" Margin="0,0,10,0"></Entry>
+            <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" TextColor="Black" Margin="15,10,15,0" Text="Dia:"></Label>
+            <Picker BackgroundColor="#77E827" HorizontalTextAlignment="Center" FontSize="21" ItemsSource="{Binding DiasSemana}" SelectedItem="{Binding Registro.Dia}" TextColor="Black" Grid.Row="3" Grid.Column="1" Margin="0,0,10,10"></Picker>
+            <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" TextColor="Black" Margin="15,10,15,0" Text="Docente:"></Label>
+            <Entry BackgroundColor="#77E827" Text="{Binding Registro.Docente}" FontSize="21" TextColor="Black" Grid.Row="5" Grid.Column="1" Margin="0,0,10,0"></Entry>
+        </Grid>
+        <Grid Margin="0,50" ColumnDefinitions=".5*,.5*">
+            <Button Command="{Binding AgregarCommand}" Margin="20" Grid.Column="0" HeightRequest="40" TextColor="Black" Text="Agregar" BackgroundColor="Green"></Button>
+            <Button Command="{Binding CancelarCommand}" Margin="20" Grid.Column="1" HeightRequest="40" TextColor="Black" Text="Cancelar" BackgroundColor="Green"></Button>
+        </Grid>
+        <Label Text="{Binding Error}" TextColor="Red" HorizontalTextAlignment="Center"></Label>
+    </VerticalStackLayout>
+</ContentPage>

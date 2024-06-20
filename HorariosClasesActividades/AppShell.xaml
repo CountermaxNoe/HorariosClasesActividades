@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="HorariosClasesActividades.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HorariosClasesActividades" xmlns:views="clr-namespace:HorariosClasesActividades.Views"
+    xmlns:viewmodels="clr-namespace:HorariosClasesActividades.ViewModels"
+    Shell.FlyoutBehavior="Disabled"
+    Title="HorariosClasesActividades">
+
+    <Shell.BindingContext>
+        <viewmodels:AgendarClaseActividadViewModel></viewmodels:AgendarClaseActividadViewModel>
+    </Shell.BindingContext>
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:ListaView}"
+        Route="Lista" />    
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:AgregarView}"
+        Route="AgregarActividad" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:EditarClaseView}"
+        Route="EditarClase" />
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:EditarActividadView}"
+        Route="EditarActividad" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:AgregarClaseView}"
+        Route="AgregarClase" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:EliminarView}"
+        Route="Eliminar" />
+
+
+</Shell>
